@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+ </head>
+ <body>
+<section class="5 py-3 py-md-5" style="background-color:aliceblue">
+  <div class="container" style="background-color:white" >
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+        <div class="card border border-light-subtle rounded-3 shadow-sm">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="text-center mb-3">
+              <a href="index.html" style="text-decoration: none;">
+                <h1 style="color: rgb(0, 215, 143); font-family: Algerian;">SVC STORES</h1>
+
+              </a>
+            </div>
+            <h2 style="color: rgb(0, 165, 110);font-family: 'Courier New', Courier, monospace;" class="fs-6 fw-normal text-center text-secondary mb-4"> Your Gateway to Aquatic Marvels</h2>
+            <form action="#!">
+              <div class="row gy-2 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="firstName" id="fn" placeholder="First Name" required>
+                    <span id="sfn"></span>
+                    <label for="firstName" class="form-label">First Name</label>
+                    
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="Mobile number" id="mob" placeholder="Mobile number" required>
+                    <label for="Mobile number" class="form-label">Mobile Number</label>
+                    <span id="smb"></span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="em" placeholder="name@example.com" required>
+                    <label for="email" class="form-label">Email</label>
+                    <span id="sem"></span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="pas" value="" placeholder="Password" required>
+                    <label for="password" class="form-label">Password</label>
+                    <span id="spas"></span>
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="cp" value="" placeholder="Confirm Password" required>
+                    <label for="password" class="form-label">Confirm Password</label>
+                    <span id="scp"></span>
+
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <button class="btn btn-primary btn-lg" id="bts" type="submit" style="background-color: rgb(6, 168, 114);">Sign up</button>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <p class="m-0 text-secondary text-center">Already have an account? <a href="#!" class="link-primary text-decoration-none">Sign in</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  let fn =document.querySelector('#fn');
+  fn.addEventListener('change',fname)
+  let mob=document.querySelector('#mob')
+  mob.addEventListener('change',mobile);
+  let emf=document.querySelector('#em')
+  emf.addEventListener('change',email);
+  let pass=document.querySelector('#pas');
+  pass.addEventListener('change',password)
+  let cpas=document.querySelector('#cp');
+  cpas.addEventListener('change',conpas);
+  let bt=document.querySelector('#bts');
+  bt.addEventListener('click',succesfull);
+  function fname(){
+    let f = document.querySelector('#fn').value;
+    const regf=/^[a-z A-Z]+$/;
+    if (!regf.test(f)){
+      document.querySelector('#sfn').innerHTML='only alphabets .....';
+      document.querySelector('#sfn').style.color='red';
+    }
+    else{
+      document.querySelector('#sfn').innerHTML=' ';
+    }
+  }
+  function mobile(){
+    let m=document.querySelector('#mob').value;
+    const regm=/^[0-9]+$/;
+    if (!regm.test(m)){
+      document.querySelector('#smb').innerHTML='only numbers';
+      document.querySelector('#smb').style.color='red';
+    }
+    else if(m.length!=10){
+      document.querySelector('#smb').innerHTML='10 digit needed';
+      document.querySelector('#smb').style.color='red';
+    }
+    else{
+      document.querySelector('#smb').innerHTML=' ';
+    }
+  }
+  function email(){
+    let e=document.querySelector('#em').value;
+    const rege=/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    if (!rege.test(e)){
+      document.querySelector('#sem').innerHTML='not valid..';
+      document.querySelector('#sem').style.color='red';
+    }
+    else{
+      document.querySelector('#sem').innerHTML=' ';
+    }
+
+  }
+   function password(){
+    let p=document.querySelector('#pas').value;
+    const regp=/^[a-z0-9A-Z@#$!*]{6,16}$/
+    if (!regp.test(p)){
+      document.querySelector('#spas').innerHTML='Password contain alphabets ,numbers and special character <br> minimum 6 characters <br> max 16 characters';
+      document.querySelector('#spas').style.color='red';
+    }
+    else{
+      document.querySelector('#spas').innerHTML=' ';
+    }
+
+  }
+  function conpas(){
+    let c=document.querySelector('#cp').value;
+    let p=document.querySelector('#pas').value;
+    if (p!=c){
+      document.querySelector('#scp').innerHTML='Password and confirm password must be same';
+      document.querySelector('#scp').style.color='red';
+    }
+    else{
+      document.querySelector('#scp').innerHTML=' ';
+    }
+
+    }
+    function succesfull(){
+      if (document.querySelector('#scp').innerHTML==' ' && document.querySelector('#spas').innerHTML==' ' && document.querySelector('#sfn').innerHTML==' ' && document.querySelector('#smb').innerHTML==' ' && document.querySelector('#sem').innerHTML==' ' ){
+        alert('Succesfully Registered...')
+        
+      }
+      else{
+        alert('Fill correctly')
+      }
+      
+
+    }
+
+</script>
+  
+ </body>
+ </html>
+
